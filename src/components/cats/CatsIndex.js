@@ -1,6 +1,8 @@
 import React from 'react'
 import axios from 'axios'
 
+import CatCard from './CatCard'
+
 
 class CatsIndex extends React.Component {
   constructor(){
@@ -22,8 +24,10 @@ class CatsIndex extends React.Component {
       <section className="section">
         <div className="container">
           <div className="columns is-multiline">
-            {this.state.cats.map((cat, i) =>
-              <p key={i}> {cat.name} </p>
+            {this.state.cats.map(cat =>
+              <div className="column is-one-quarter" key={cat._id}>
+                <CatCard {...cat} />
+              </div>
             )}
           </div>
         </div>
