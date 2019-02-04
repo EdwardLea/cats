@@ -1,6 +1,5 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import axios from 'axios'
 import {BrowserRouter, Route, Switch } from 'react-router-dom'
 
 import CatsIndex from './components/cats/CatsIndex'
@@ -22,11 +21,6 @@ class App extends React.Component {
     this.state = {
       cats: []
     }
-  }
-
-  componentDidMount() {
-    axios.get('/api/cats')
-      .then(res => this.setState({ cats: res.data }))
   }
 
   render(){
