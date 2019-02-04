@@ -10,7 +10,7 @@ const app = express()
 
 app.use(express.static(`${__dirname}/dist`))
 
-mongoose.connect('mongodb://localhost/cats-db')
+mongoose.connect(process.env.MONGODB_URI)
 
 app.use(bodyParser.json())
 
