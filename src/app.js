@@ -4,9 +4,10 @@ import axios from 'axios'
 import {BrowserRouter, Route, Switch } from 'react-router-dom'
 
 import CatsIndex from './components/cats/CatsIndex'
+import CatsEdit from './components/cats/CatsEdit'
 import CatsNew from './components/cats/CatsNew'
 import Navbar from './components/common/Navbar'
-// import CatsShow from './components/cats/CatsShow'
+import CatsShow from './components/cats/CatsShow'
 import Home from './components/Home'
 
 import 'bulma'
@@ -36,7 +37,8 @@ class App extends React.Component {
           <Navbar / >
           <Switch>
             <Route path="/cats/new" component={CatsNew} />
-            {/*<Route path="/cats/:id" component={CatsShow} />*/}
+            <Route path="/cats/:id/edit" component={CatsEdit} />
+            <Route path="/cats/:id" component={CatsShow} />
             <Route path="/cats" component={CatsIndex} />
             <Route exact path="/" component={Home} />
           </Switch>

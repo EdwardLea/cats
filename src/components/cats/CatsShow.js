@@ -12,48 +12,49 @@ class CatsShow extends React.Component {
 
     }
 
-    // this.handleDelete = this.handleDelete.bind(this)
+    this.handleDelete = this.handleDelete.bind(this)
   }
 
-  // handleDelete(){
-  //   axios
-  //     .delete(`/cats/${this.props.match.params.id}`,{
-  //       headers: { Authorization: `Bearer ${Auth.getToken()}`}
-  //     })
-  //     .then(() => {
-  //       this.props.history.push('/cats')
-  //     })
-  //     .catch(err => console.log(err))
-  //
-  // }
+  handleDelete(){
+    axios
+      .delete(`/api/cats/${this.props.match.params.id}`,{
+      })
+      .then(() => {
+        this.props.history.push('/cats')
+      })
+      .catch(err => console.log(err))
+
+  }
 
   componentDidMount() {
-    axios.get(`api/cats/${this.props.match.params.id}`)
+    axios.get(`/api/cats/${this.props.match.params.id}`)
       .then(res => this.setState({ cat: res.data }))
   }
 
   render(){
     if(!this.state.cat) return null
-    const { _id, name, origin, image, tastingNotes } = this.state.cheese
+    const { _id, name, age, image, breed, colour, gender } = this.state.cat
     return (
       <section className="section">
         <div className="container">
           <h1 className="title is-1"> {name} </h1>
-          <h4 className="title is-4">Origin: {origin}</h4>
+          <h4 className="title is-4">Age: {age}</h4>
           <hr />
           <div className="columns">
             <div className="column">
               <figure className="image">
-                <img src={image} alt="name" />
+                <img src={image} alt={name} />
               </figure>
             </div>
             <div className="column">
               <div className="content">
-                <h4 className="title is-4">Tasting Notes</h4>
-                <p> {tastingNotes}</p>
+                <h4 className="title is-4">Breed: {breed}</h4>
+                <h4 className="title is-4">Colour: {colour}</h4>
+                <h4 className="title is-4">Gender: {gender}</h4>
                 <hr />
-                <Link to={`/cheeses/${_id}/edit`} className="button is-info" >Edit </Link>
-                <button className="button is-danger" onClick={this.handleDelete}>Delete</button>
+                <Link to={`/cats/${_id}/edit`} className="button is-dark" >Edit </Link>
+                <hr />
+                <button className="button is-dark" onClick={this.handleDelete}>Delete</button>
               </div>
             </div>
           </div>

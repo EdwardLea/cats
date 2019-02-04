@@ -13,15 +13,14 @@ module.exports = {
       { test: /\.jsx?$/, loader: 'babel-loader', exclude: /node_modules/ },
       { test: /\.css$/, loader: ['style-loader', 'css-loader'] },
       { test: /\.s(a|c)ss$/, loader: ['style-loader', 'css-loader', 'sass-loader'] }
-
     ]
   },
   devServer: {
     contentBase: path.resolve('src'),
+    historyApiFallback: true,
     hot: true,
     open: true,
     port: 8000,
-    historyApiFallback: true,
     watchContentBase: true,
     proxy: {
       '/api': {
